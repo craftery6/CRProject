@@ -77,3 +77,44 @@ for link in soup.find_all('a'):
 ##grouping data by location and violent crime number
 df.groupby(["Location", "violent_crime"])
 
+##add all rows to see total crime in each state and add as a column
+column_list = list(df)
+print(column_list)
+column_list.remove("Location")
+print(column_list)
+df["Total Crime"] = df[column_list].sum(axis=1)
+print(df)
+
+##sort by 'Total Crime' to see what location has the most crime overall
+print(df.sort_values(by='Total Crime', ascending=False))
+
+##find the mean of the column 'Total Crime' to find out what the average number of crimes are a year per location in the USA.
+print(df["Total Crime"].mean())
+
+##find the totals of each crime and print them
+violent_crime_sum = df["violent_crime"].sum()
+print(violent_crime_sum)
+murder_ms_sum = df["murder_ms"].sum()
+print(murder_ms_sum)
+rape_sum = df["rape"].sum()
+print(rape_sum)
+robbery_sum = df["robbery"].sum()
+print(robbery_sum)
+agg_assault_sum = df["agg_assault"].sum()
+print(agg_assault_sum)
+prop_crimes_sum = df["prop_crimes"].sum()
+print(prop_crimes_sum)
+burglary_sum = df["burglary"].sum()
+print(burglary_sum)
+theft_sum = df["theft"].sum()
+print(theft_sum)
+
+#make a new list total crimes
+total_crimes_sums = [violent_crime_sum, murder_ms_sum, rape_sum, robbery_sum, agg_assault_sum, prop_crimes_sum, burglary_sum, theft_sum]
+
+#show the most common crime
+total_crimes_sums.sort()
+print('sorted list: ', total_crimes_sums)
+
+#plot a graph of total crime per location
+df.plot(x="Location", y="Total Crime")
