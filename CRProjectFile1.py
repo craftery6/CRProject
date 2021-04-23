@@ -52,3 +52,23 @@ print(df[-1:])
 
 ##selecting a subset of rows and columns within the dataframe 'df' to show the violent crime, murder/ manslaughter stats and rape stats of 3 differeyt locations.
 print(df.iloc[1:4, 0:4])
+
+##import the requests package & BeautifulSoup
+import requests
+from bs4 import BeautifulSoup
+
+##scrape URL from the web
+
+URL = 'https://www.factmonster.com/us/states/state-population-by-rank-2015'
+r= requests.get(URL)
+html_doc = r.text
+soup = BeautifulSoup(html_doc)
+print(soup.prettify())
+print(soup.title)
+print(soup.get_text())
+for link in soup.find_all('a'):
+    print(link.get('href'))
+
+##grouping data by location and violent crime number
+df.groupby(["Location", "violent_crime"])
+
