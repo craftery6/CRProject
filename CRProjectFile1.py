@@ -34,10 +34,15 @@ print(df[['theft','rape']])
 ##show the details of the first column, 'location'
 print(df.loc[0])
 
-##Create a new list called 'crimes' and print the contents
+##Create a new list called 'crimes' and print the contents using a for loop
 crimes = ["theft", "rape", "burglary", "robbery", "violent_crime", "murder_ms", "agg_assault", "prop_crimes"]
 for item in crimes:
     print(item)
+
+for i in range(len(crimes)):
+        element = crimes[i]
+        if type(element) == int:
+            sequence[i] = element + 4
 
 ##Find the index value of 'robbery' in the list
 item2 = "robbery"
