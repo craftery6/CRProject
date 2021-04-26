@@ -130,7 +130,7 @@ df.plot()
 plt.ylabel('Total Crime')
 plt.show()
 
-## plot property crimes by location in a bar chart
+# plot property crimes by location in a bar chart
 df.plot(x = "Location", y = "prop_crimes", kind = "bar")
 plt.show()
 
